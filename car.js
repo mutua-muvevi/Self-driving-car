@@ -12,14 +12,14 @@ class Car {
 
 		this.angle = 0
 
-
+		this.sensor = new Sensor(this);
 		this.controls = new Controls();
 	}
 
-	update() {
-		this.#move()
-
-	}
+	update(roadBorders){
+        this.#move();
+        this.sensor.update(roadBorders);
+    }
 
 	#move(){
 		if (this.controls.forward) {
@@ -79,6 +79,7 @@ class Car {
 		)
 		ctx.fill()
 		ctx.restore()
-		// console.log("The width", this.width)
+
+		this.sensor.draw(ctx);
 	}
 }
