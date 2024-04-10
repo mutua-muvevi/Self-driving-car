@@ -19,9 +19,11 @@ class Car {
 	}
 
 	update(roadBorders) {
-		this.#move();
-		this.polygon = this.#createPolygon();
-		this.crashed = this.#assessDamage(roadBorders);
+		if(!this.crashed){
+			this.#move();
+			this.polygon = this.#createPolygon();
+			this.crashed = this.#assessDamage(roadBorders);
+		}
 		this.sensor.update(roadBorders);
 	}
 
@@ -30,8 +32,8 @@ class Car {
 			if(polysIntersect(this.polygon, roadBorders[i])){
 				return true
 			}
-			return false
 		}
+		return false
 	}
 
 	#createPolygon() {
