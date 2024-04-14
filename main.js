@@ -15,16 +15,21 @@ const car = new Car(road.getLaneCenter(2), 100, 30, 50, "AI");
 const traffic = [
 	new Car(road.getLaneCenter(1), -100, 30, 50, "DUMMY", 2),
 	new Car(road.getLaneCenter(0), -500, 30, 60, "DUMMY", 1),
-	new Car(road.getLaneCenter(3), 500, 30, 60, "DUMMY", 3),
-	new Car(road.getLaneCenter(1), 200, 30, 50, "DUMMY", 1),
-	new Car(road.getLaneCenter(2), 300, 30, 50, "DUMMY", 2),
-	new Car(road.getLaneCenter(3), 300, 30, 50, "DUMMY", 2),
-	new Car(road.getLaneCenter(4), 200, 30, 50, "DUMMY", 2),
-	new Car(road.getLaneCenter(5), 500, 30, 50, "DUMMY", 3),
-	new Car(road.getLaneCenter(5), -700, 30, 50, "DUMMY", 1),
 ];
 
 animate();
+
+function generateCars(N) {
+	const cars = [];
+
+	for(let i = 0; i < N; i++){
+		cars.push(
+			new Car(road.getLaneCenter(1), 100, 30, 50, "AI")
+		);
+	}
+
+	return cars
+}
 
 function animate() {
 	for(let i = 0; i < traffic.length; i++){
